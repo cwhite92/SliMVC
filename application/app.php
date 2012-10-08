@@ -24,7 +24,7 @@ class Application {
         // Check if controller exists
         if(file_exists(APP_ROOT . 'controllers/' . $controllerName . '.php')) {
             // Include and instantiate controllers
-            require_once APP_ROOT . 'controllers/controller.php';
+            require_once APP_ROOT . 'controllers/Controller.php';
             require_once APP_ROOT . 'controllers/' . $controllerName . '.php';
             $controllerName .= 'Controller';
             $controller = new $controllerName();

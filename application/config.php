@@ -6,5 +6,10 @@ class Config {
     public static $basePath = '/slimvc';
 
     // Database connection information
-
+    public static $db = array(
+    						  'host' => 'localhost',
+    						  'user' => 'root',
+    						  'pass' => '',
+    						  'database' => 'slimvc'
+    						  );
 }

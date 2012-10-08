@@ -3,16 +3,14 @@
 class PagesController extends Controller {
 
     public function home() {
-    	// Test models
+    	// Load model
     	$this->loadModel('Users');
 
-    	$this->models['Users'];
-
-    	// Test views
-        $data = array('test' => 'homepage');
+    	// Assign view variables and load the homepage view
+        $data = array(
+        			  'users' => $this->models['Users']->getAllUsers()
+        			  );
         $this->loadView('home', $data);
-
-        $this->render();
     }
 
 }
