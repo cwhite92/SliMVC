@@ -7,9 +7,9 @@ class Config {
 
     // Database connection information
     public static $db = array(
-    						  'host' => 'localhost',
-    						  'user' => 'root',
-    						  'pass' => '',
-    						  'database' => 'slimvc'
-    						  );
+                              'host' => 'localhost',
+                              'user' => 'root',
+                              'pass' => '',
+                              'database' => 'slimvc'
+                              );
 }

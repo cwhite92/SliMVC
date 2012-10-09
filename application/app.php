@@ -7,7 +7,7 @@ class Application {
         set_exception_handler(array('Application', 'exception'));
 
         // Determine request path
-        $path = $_SERVER['REQUEST_URI'];
+        $path = strtolower($_SERVER['REQUEST_URI']);
         $path = str_replace(Config::$basePath, '', $path);
 
         // Load routes
