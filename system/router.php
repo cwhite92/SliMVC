@@ -46,8 +46,9 @@ class Router {
 
         // Check if we've 404'd
         if(!isset($controllerName, $actionName)) {
-            // TODO: write proper 404 handler
-            throw new Exception('404 Not Found');
+            // We have, so route the user to the 404 page
+            $controllerName = 'Errors';
+            $actionName = 'notFound';
         }
 
         return array('controller' => $controllerName,

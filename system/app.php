@@ -2,13 +2,17 @@
 
 class Application {
 
-    public function run() {
+    public function run($forcePath = null) {
         // Wrap the entire application in a try block to catch exceptions
         try {
             // Determine request path also forcing ending slash
-            $path = str_replace(Config::$basePath, '', strtolower($_SERVER['REQUEST_URI']));
-            if(substr($path, -1) != '/') {
-                $path .= '/';
+            if(isset($forcePath)) {
+                $path = $forcePath;
+            } else {
+                $path = str_replace(Config::$basePath, '', strtolower($_SERVER['REQUEST_URI']));
+                if(substr($path, -1) != '/') {
+                    $path .= '/';
+                }
             }
 
             // Load routes and router
@@ -17,7 +21,7 @@ class Application {
 
             // Match this request to a route
             $destination = Router::routeRequest($path);
-            
+
             // Check if controller exists
             if(file_exists(APP_ROOT . 'controllers/' . $destination['controller'] . '.php')) {
                 // Include and instantiate controllers
@@ -36,7 +40,8 @@ class Application {
                 throw new Exception('Controller ' . $destination['controller'] . 'Controller missing');
             }
         } catch(Exception $e) {
-            die('<h1>Ahhh! An Exception!</h1>' . $e->getMessage());
+            // Load the exception page
+            $this->run('/exception/' . $e->getMessage() . '/');
         }
     }
 
