@@ -2,7 +2,7 @@
 
 class PagesController extends Controller {
 
-    public function home($passedParam) {
+    public function home() {
         // Load model
         $this->loadModels(array('Users'));
 
@@ -12,8 +12,7 @@ class PagesController extends Controller {
       	// Assign view variables and load the views
         $data = array('title' => 'SliMVC - lightweight PHP MVC framework',
                       'users' => $this->models['Users']->getAllUsers(),
-                      'helperTest' => $this->helpers['Password']->test(),
-                      'passedParam' => $passedParam);
+                      'helperTest' => $this->helpers['Password']->test());
         $this->loadViews(array('header', 'home', 'footer'), $data);
     }
 
